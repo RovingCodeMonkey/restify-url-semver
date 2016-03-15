@@ -18,6 +18,8 @@ module.exports = function (options) {
     version = version.replace(/v(\d{1})\.(\d{1})/, '$1.$2.0');
     version = version.replace(/v(\d{1})/, '$1.0.0');
 
+     if (pieces[0].length == 0 && version.length == 0) version = "0.0.0"
+     
     if (semver.valid(version)) {
       req.url = req.url.replace(pieces[0], '');
       req.headers = req.headers || [];
